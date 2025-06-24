@@ -1,33 +1,32 @@
 import React, { useEffect, useRef } from "react";
 
-const Box = (props)=>{
-  
-  const thisRef = useRef();
-  function handler(){
-    props.onChange(thisRef);
-  }
+const Box = (props) => {
+    const thisRef = useRef();
+    function handler() {
+        props.onChange(thisRef);
+    }
 
-// console.log(thisRef);
-  return(
-    <>
-      
+    // console.log(thisRef);
+    return (
+        <>
+            <mesh
+                onUpdate={handler}
+                ref={thisRef}
+                position={[props.x, props.y, props.z]}
+                castShadow
+            >
+                <boxGeometry args={[0.94, 0.94, 0.94]} />
 
-      <mesh onUpdate={handler} ref={thisRef} position={[props.x,props.y,props.z]} castShadow>
-        <boxGeometry args={[0.94,0.94,0.94]} />
-        
-      <meshStandardMaterial attach="material-0" color="blue" /> 
-      <meshStandardMaterial attach="material-1" color="green" />   
-      <meshStandardMaterial attach="material-2" color="red" /> 
-      <meshStandardMaterial attach="material-3" color="#ec4806" />    
-      <meshStandardMaterial attach="material-4" color="white" />  
-      <meshStandardMaterial attach="material-5" color="yellow" /> 
-      
-      </mesh>
-
-      
-    </>
-  );
-}
+                <meshStandardMaterial attach="material-0" color="blue" />
+                <meshStandardMaterial attach="material-1" color="green" />
+                <meshStandardMaterial attach="material-2" color="red" />
+                <meshStandardMaterial attach="material-3" color="#ec4806" />
+                <meshStandardMaterial attach="material-4" color="white" />
+                <meshStandardMaterial attach="material-5" color="yellow" />
+            </mesh>
+        </>
+    );
+};
 
 export default Box;
 
